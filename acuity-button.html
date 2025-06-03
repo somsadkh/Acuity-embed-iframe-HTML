@@ -1,0 +1,34 @@
+<a
+  href="https://app.acuityscheduling.com/schedule.php?owner=34128574"
+  id="link-u3baujf1srg"
+  target="_blank"
+  class="url-link btn btn-shadow item-block"
+  data-at="button"
+  data-link-u3baujf1srg=""
+>
+  Click To Book Online Now
+</a>
+
+<script>
+  (function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const queryParts = [];
+
+    utmParams.forEach(param => {
+      const value = urlParams.get(param);
+      if (value) {
+        queryParts.push(`${param}=${encodeURIComponent(value)}`);
+      }
+    });
+
+    const utmQuery = queryParts.join('&');
+    const baseHref = 'https://app.acuityscheduling.com/schedule.php?owner=34128574';
+    const fullHref = utmQuery ? `${baseHref}&${utmQuery}` : baseHref;
+
+    const link = document.getElementById('link-u3baujf1srg');
+    if (link) {
+      link.href = fullHref;
+    }
+  })();
+</script>
