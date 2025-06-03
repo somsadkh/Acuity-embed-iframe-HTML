@@ -1,0 +1,35 @@
+<iframe
+  id="acuity-iframe"
+  src="https://app.acuityscheduling.com/schedule.php?owner=34128574&amp;ref=embedded_csp"
+  title="Schedule Appointment"
+  width="100%"
+  height="800"
+  frameborder="0"
+></iframe>
+
+<script
+  src="https://embed.acuityscheduling.com/js/embed.js"
+  type="text/javascript"
+></script>
+
+<script>
+  function getUTMParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const result = [];
+
+    utmParams.forEach(param => {
+      if (urlParams.get(param)) {
+        result.push(`${param}=${encodeURIComponent(urlParams.get(param))}`);
+      }
+    });
+
+    return result.join('&');
+  }
+
+  const baseURL = 'https://app.acuityscheduling.com/schedule.php?owner=34128574&ref=embedded_csp&';
+  const utmQuery = getUTMParams();
+  const iframeURL = utmQuery ? `${baseURL}${utmQuery}` : baseURL;
+
+  document.getElementById('acuity-iframe').src = iframeURL;
+</script>
