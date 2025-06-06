@@ -1,0 +1,66 @@
+<a
+  href="https://app.acuityscheduling.com/schedule.php?owner=34128574&calendarID=11836468&ref=booking_button"
+  target="_blank"
+  class="acuity-embed-button"
+  style="
+    background: #ff3131;
+    color: #fff;
+    padding: 8px 12px;
+    border: 0px;
+    -webkit-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+  "
+  >Schedule Appointment</a
+><link
+  rel="stylesheet"
+  href="https://embed.acuityscheduling.com/embed/button/34128574.css"
+  id="acuity-button-styles"
+/>
+<script
+  src="https://embed.acuityscheduling.com/embed/button/34128574.js"
+  async
+></script>
+<script>
+  function getUTMParam(param) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(param) || "";
+  }
+
+  // Get UTM values
+  const utmSource = getUTMParam("utm_source");
+  const utmMedium = getUTMParam("utm_medium");
+
+  // Generate dynamic site--page string
+  const hostname = window.location.hostname
+    .replace(/^www\./, "")
+    .replace(/\./g, "-"); // e.g., "vantagepointcounselingdallas-com"
+  const pathname = window.location.pathname
+    .replace(/^\/|\/$/g, "")
+    .replace(/\//g, "-"); // e.g., "lp1"
+  const dynamicPageTag = `${hostname}--${pathname || "home"}`; // fallback to 'home' if root
+
+  // Acuity field mappings
+  const extraFields = [
+    `field%3A16663026=${encodeURIComponent(dynamicPageTag)}`, // dynamic site--page name
+    `field%3A16713254=${encodeURIComponent(utmSource)}`,
+    `field%3A16713269=${encodeURIComponent(utmMedium)}`,
+  ];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll("a.acuity-embed-button");
+
+    buttons.forEach((button) => {
+      const originalUrl = new URL(button.href);
+      extraFields.forEach((field) => {
+        const [key, value] = field.split("=");
+        originalUrl.searchParams.set(key, value);
+      });
+      button.href = originalUrl.toString();
+    });
+  });
+</script>
